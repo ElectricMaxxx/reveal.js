@@ -31,6 +31,17 @@
 			}
 		</script>
 
+		<style>
+			.logo {
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 225px;
+				height: 36px;
+				background-image: url('mayflower-logo.png');
+			}
+		</style>
+
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
@@ -356,12 +367,19 @@ function linkify( selector ) {
 			</div>
 
 		</div>
-
+		
 		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.min.js"></script>
+		<script src="js/reveal.js"></script>
+		<script src="jquery-1.11.1.min.js"></script>
 
 		<script>
 
+			Reveal.addEventListener('ready', function() {
+				Reveal.addBackgroundExtra({
+					'logo': ''
+				});
+			});
+	
 			// Full list of configuration options available here:
 			// https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
@@ -369,6 +387,7 @@ function linkify( selector ) {
 				progress: true,
 				history: true,
 				center: true,
+				backgroundTransition: 'none',
 
 				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
 				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
@@ -384,7 +403,8 @@ function linkify( selector ) {
 					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
 					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/background-extra/background-extra.js', condition: function() {return true;} }
 				]
 			});
 

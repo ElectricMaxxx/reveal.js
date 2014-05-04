@@ -1951,6 +1951,10 @@ var Reveal = (function(){
 		// states of their slides (past/present/future)
 		toArray( dom.background.childNodes ).forEach( function( backgroundh, h ) {
 
+			if (backgroundh.className.match(/background-extra/)) {
+				return;
+			}
+
 			if( h < indexh ) {
 				backgroundh.className = 'slide-background ' + horizontalPast;
 			}
@@ -1966,6 +1970,10 @@ var Reveal = (function(){
 
 			if( includeAll || h === indexh ) {
 				toArray( backgroundh.childNodes ).forEach( function( backgroundv, v ) {
+
+					if (backgroundv.className.match(/background-extra/)) {
+								return;
+					}
 
 					if( v < indexv ) {
 						backgroundv.className = 'slide-background past';
