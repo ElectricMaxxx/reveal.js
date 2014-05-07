@@ -138,12 +138,6 @@ body {
 /*********************************************
  * BACKGROUND EXTRAS
  *********************************************/
-.past > .background-extra {
-  visibility: hidden; }
-
-.future > .background-extra {
-  visibility: hidden; }
-
 .print-pdf section.stack > .slide-background > .background-extra {
   visibility: hidden; }
 
