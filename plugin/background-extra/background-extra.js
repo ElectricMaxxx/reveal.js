@@ -12,6 +12,8 @@
 			
 			Array.prototype.forEach.call(backgrounds,
 				function(backgroundElement) {
+					if (backgroundElement.querySelector('.slide-background')) return;
+					
 					var logoElement = document.createElement('div');
 					logoElement.className = 'background-extra' + ' ' + classname;
 					logoElement.innerHTML = config[classname] || '';
