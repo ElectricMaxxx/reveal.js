@@ -11,7 +11,7 @@
   font-weight: normal;
   font-style: normal; }
 .mayflower-logo {
-  position: relative;
+  position: absolute;
   top: 10px;
   left: 10px;
   width: 225px;
