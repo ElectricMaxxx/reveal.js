@@ -51,11 +51,15 @@ $heading1TextShadow: 0 1px 0 #aaa, 0 2px 0 #b9b9b9, 0 3px 0 #bbb, 0 4px 0 #c9c9c
 
 .mayflower-logo {
 	position: absolute;
-	top: 10px;
+	top: 5px;
 	left: 10px;
-	width: 225px;
-	height: 36px;
+	max-height: 36px;
+	height: 7%;
+	width: 50%;
 	background-image: url('mayflower-logo.png');
+	background-position: top left;
+	background-size: contain;
+	background-repeat: no-repeat;
 }
 
 // Theme template ------------------------------

@@ -1,6 +1,6 @@
 div.mayflower-logo
 {
-	bottom: 10px;
+	bottom: 5px;
 	top: auto;
 }
 
@@ -24,8 +24,9 @@ div.mayflower-logo
 	left: auto;
 	background-image: url('./ipc_logo.png');
 	background-color: transparent;
+	background-position: bottom right;
 	height: 30%;
-	width: 50%;
+	width: 40%;
 }
 
 .extra-first {
