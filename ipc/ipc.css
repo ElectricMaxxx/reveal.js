@@ -2,6 +2,7 @@ div.mayflower-logo
 {
 	bottom: 5px;
 	top: auto;
+	background-position: bottom left;
 }
 
 .backgrounds .slide-background:first-child .extra-first,
