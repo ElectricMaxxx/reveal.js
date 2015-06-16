@@ -64,23 +64,20 @@
                         </li>
 					</ul>
 					<aside class="notes">
-						<p>
-							Twitter handle sollte bekannt sein.
-						</p>
-						<p>
-							Die sog. Liste
-						</p>
-						<p>
-							Domain bei Mails: <br />
-							Arbeitgeber = Mayflower GmbH
-						</p>
+                        - aus der PHP Ecke <br />
+                        - passionierter Symfony Dev <br />
+                        - Core Dev vom Symfony CMF <br />
+						- Twitter handle sollte bekannt sein. <br />
+						- Domain bei Mails: <br />
+						- Arbeitgeber = Mayflower GmbH <br />
+                        - also ganz um die Ecke
 					</aside>
 				</section>
 
 				<section>
 					<h1>About?</h1>
 					<aside class="notes">
-						### Worum soll es heute gehen? <br />
+						Worum soll es heute gehen? <br />
 						- Feedback aus der Runde <br />
 						- Wie wurde Abstrakt verstanden? <br />
 					</aside>
@@ -96,17 +93,18 @@
 				<section>
 					<h1>HTTP</h1>
 					<aside class="notes">
-							- Einfürhung
-							- Request <-> Response
-							- Methoden
-							- Status codes
+                        - HyperText TransferProtokol  <br />
+                        - Einfürhung <br />
+                        - hat etwas von einer Konversation mit dem Guten alten Brief
+                        - Sende Content = Briefinhalt an Addresse und erhalte eine Antwort
+                        - Request <-> Response <br />
                     </aside>
 				</section>
 
                 <section>
 					<h1>Request</h1>
 					<aside class="notes">
-						- HTTP = Übertragung von Nachrichten <br />
+						- HTTP dient der Übertragung von Nachrichten <br />
 						- Anschauen: Request <br />
 					</aside>
 				</section>
@@ -121,6 +119,9 @@ Content-Type: text/html
 					</pre>
                     <p>Header Request</p>
 					<aside class="notes">
+                        - Was sehen wir hier? <br />
+                        - Header eines Request <br />
+                        - könnte so von einem Browser oder anderen HTTP-Client gesendet werden <br />
 						- Request zu HOST <br />
 						- Resource /info <br />
                         - Methode: GET <br />
@@ -151,8 +152,9 @@ Content-Type: text/html
 					</pre>
                     <p>Content Response</p>
 					<aside class="notes">
-						- Bode = Content <br />
-						- interessanter: Header <br />
+						- Body = Content <br />
+						- interessanter wäre auch hier: Header <br />
+                        - na dann mal los
 					</aside>
 				</section>
 
@@ -166,10 +168,11 @@ Content-Type: text/html; charset=UTF-8
 					</pre>
                     <p>Header Response</p>
 					<aside class="notes">
-                        - Alles OK <br />
-                        - Status Code: 200 <br />
+                        - Alles OK, steht sogar da <br />
+                        - Status Code: 200 (numerischer Wert) <br />
                         - Textform: OK <br />
-                        - zusätzliche Header wie z.B. Content-Type, -Lenght <br />
+                        - zusätzliche Header wie z.B. Content-Type, -Lenght<br />
+                        - und viele mehr möglich<br />
 					</aside>
 				</section>
 
@@ -183,11 +186,12 @@ Content-Type: text/html; charset=UTF-8
                         <li class="fragment"><span class="">5XX - Fehler am Server</span></li>
                     </ul>
                     <aside class="notes">
+                        - Was sind jetzt diese Status Codes? <br />
                         - gibt info über (Miss-)erfolg eines Request <br />
-                        - Phrase für den Grund -> kurze Info
-                        - Unterteilung in Gruppen
-                        - dreistellig
-                        -> jetzt los
+                        - Phrase für den Grund -> kurze Info <br />
+                        - Unterteilung in Gruppen <br />
+                        - dreistellig, numerisch <br />
+                        -> jetzt los, Click <br />
                     </aside>
                 </section>
 
@@ -197,6 +201,8 @@ Content-Type: text/html; charset=UTF-8
                         - Im Beispiel GET <br />
                         - Doch es gibt mehr <br />
                         - Haben Bewandniss <br />
+                        - zumindest mehr als wie die Werte aus einem Formular an den Server geschickt werden <br />
+                        - PHP Insider :-) <br />
                     </aside>
                 </section>
 
@@ -212,9 +218,9 @@ Content-Type: text/html; charset=UTF-8
                     <aside class="notes">
                         - richtig angewendet schon <br />
                         - GET fordert nur Resource an <br />
-                        - ändert keine Side-Effects <br />
+                        - ändert keine Resourcen <br />
+                        - keine Side-Effects <br />
                         - Idempotent: kann immer wieder aufrufen -> selbes Ergebnis <br />
-
                     </aside>
                 </section>
 
@@ -226,6 +232,7 @@ Content-Type: text/html; charset=UTF-8
                 <section>
                     <h1><strike>GET /blog/2/edit</strike></h1>
                     <aside class="notes">
+                        Gleich wieder vergessen <br />
                         Geht garnicht
                     </aside>
                 </section>
@@ -251,7 +258,7 @@ Content-Type: text/html; charset=UTF-8
                 <section>
                     <pre>
                         <code>
-POST /api/v1/users HTTP/1.1
+POST /users HTTP/1.1
 Host: www.example.dev
 Content-Type: application/json
 
@@ -263,10 +270,8 @@ Content-Type: application/json
                     </pre>
                     <p>POST request</p>
                     <aside class="notes">
-                        - jetzt Request auf eine api Addresse <br />
                         - ändert aber nix <br />
-                        - Angabe Content-Type optional <br />
-                        - wenn ich Antwort in best. Typ haben will <br />
+                        - Angabe Content-Type gibt an von welchem Type dei gesendeten Daten sind <br /> <br />
                     </aside>
                 </section>
 
@@ -275,7 +280,7 @@ Content-Type: application/json
                         <code>
 HTTP/1.1 201 Created
 Content-Type: application/json;
-Content-Location: /api/v1/users/3
+Content-Location: /users/3
 
 {
     "id": "3",
@@ -287,9 +292,8 @@ Content-Location: /api/v1/users/3
                     <p>POST response</p>
                     <aside class="notes">
                         - hat wohl geklappt <br />
-                        - bekomme wohl auch den gewünschten Content-Type <br />
                         - Content-Location: Da findet man jetzt den neu angelegten Usr <br />
-                        - Body = User (optionial) <br />
+                        - Body = User zurück mit seinder<br />
                     </aside>
                 </section>
 
@@ -304,7 +308,7 @@ Content-Location: /api/v1/users/3
                 <section>
                     <pre>
                         <code>
-PUT /api/v1/users/3 HTTP/1.1
+PUT /users/3 HTTP/1.1
 Host: www.example.dev
 Content-Type: application/json
 
@@ -358,6 +362,7 @@ Content-Type: application/json;
                     <aside class="notes">
                         - definitiv nicht idempotent. Ist die Resource noch da? <br />
                         - haben Side-Effects <br />
+                        - ändern schließlich Werte oder legen neue Resourcen an <br />
                     </aside>
                 </section>
 
@@ -372,7 +377,7 @@ Content-Type: application/json;
                 <section>
                     <pre>
                         <code data-trim>
-DELETE /api/v1/users/3 HTTP/1.1
+DELETE /users/3 HTTP/1.1
 Host: www.example.dev
                         </code>
                     </pre>
@@ -387,7 +392,7 @@ Host: www.example.dev
                     <pre>
                         <code data-trim>
 HTTP/1.1 204 No Content
-Location: /api/v1/users
+Location: /users
                         </code>
                     </pre>
                     <p>DELETE response</p>
@@ -396,7 +401,7 @@ Location: /api/v1/users
                         - kein Body nötig <br />
                         - Warum auch? <br />
                         - Weiterleitung auf Collection (optional) -> HATEAOS (später) <br />
-                        - Sonst dead End <br />
+                        - Man spricht sonst von einem sogenannten dead End <br />
                     </aside>
                 </section>
 
@@ -451,6 +456,7 @@ Location: /api/v1/users
                     <h1>4 Constraints</h1>
                     <aside class="notes">
                         - es geht im Grunde um 4 Constraints
+                        - haben sich heraus kristalisiert
                     </aside>
                 </section>
 
@@ -479,6 +485,7 @@ Location: /api/v1/users
                         - Service weiß nichts von vorhergehenden Requests <br />
                         - Widerspricht eigentlich unserer Denkweise von Sessions/Cookies <br />
                         - erhört dann natürlich Skalierbarkeit, da Lastverteilung einfacher <br />
+                        - Load Balancer muss kann nach belieben Requests auf verschiedene Nodes verteilen <br />
                         -> Client App. ist muss Zustand halten
                     </aside>
                 </section>
@@ -486,8 +493,11 @@ Location: /api/v1/users
                 <section>
                     <h1>4.<br />Operationen</h1>
                     <aside class="notes">
-                        - Änderungen, Löschen oder anlegen einer Resource geschieht über Operationen<br />
-                        - nicht in der URL!!
+                        - dienen dem state transfer <br />
+                        - Rudimentärer Bestandteil von REST <br />
+                        - Resource kann nur über eine Operation, veändert, angelegt oder gelöscht werden <br />
+                        - nicht in der URL!! <br />
+                        - Methoden in HTTP?  <br />
                     </aside>
                 </section>
 
@@ -513,7 +523,7 @@ Location: /api/v1/users
                     <h1>Verschiedene Repräsentationen</h1>
                     <aside class="notes">
                         - Wie könnten die denn aussehen?
-                        - Am Beispiel des Users
+                        - Wir nehmen uns mal einen vereinfachten User vor ...
                     </aside>
                 </section>
 
@@ -579,8 +589,9 @@ Location: /api/v1/users
                 <section>
                     <h1>Wie erhalte die die gewünnschte Repräsentation?</h1>
                     <aside class="notes">
-                        - haben jetzt gesehen, dass es sie gibt, aber wie komme ich dann an die Ran
-                        - Wichtig: Server muss sie natürlich bereit stellen können
+                        - haben jetzt gesehen, dass es sie gibt, aber wie komme ich dann an die Ran <br />
+                        - Wichtig: Server muss sie natürlich bereit stellen können <br />
+                        - d.h. in der Lage dazu sein <br />
                     </aside>
                 </section>
 
@@ -593,6 +604,7 @@ Location: /api/v1/users
                     </ul>
                     <aside class="notes">
                         - wenn Repräsentaion nicht da, dann 404 Not Found
+                        - im Symfony Umfeld: FosRestBundle -> default
                     </aside>
                 </section>
 
@@ -614,8 +626,9 @@ Location: /api/v1/users
                 <section>
                     <h1>Wie soll Resource aussehen?</h1>
                     <aside class="notes">
-                        - Client will meist mehr information als reinen Paylod
-                        - z.B. Metadaten oder mögliche Links
+                        - Client will meist mehr information als reinen Paylod <br />
+                        - also bspw. die Daten eines Users <br />
+                        - z.B. Metadaten oder mögliche Links <br />
                     </aside>
                 </section>
 
@@ -644,6 +657,8 @@ Location: /api/v1/users
                         - Nutzer navigiert durch Netzt über Links <br />
                         -> Motor = Engine <br />
                         - Client kann sich nach initialen infos selbst durch die Resourcen bewegen <br />
+                        - es geht sogar so weit, dass Clients code zum ausführen von bestimmten Applications-Teilen bekommen <br />
+                        - z.B java applets
                     </aside>
                 </section>
 
@@ -676,8 +691,10 @@ Location: /api/v1/users
                     <aside class="notes">
                         - Schwierig
                         - Controvers
-                        - Weil kein Standart für Links gegeben,
-                        - aber Hal Spezifikation
+                        - Weil kein Standart für Links gegeben
+                        - müsste man eigentlich sagen, dass keine REST Konforme Kommunikation mit JSON möglich wäre
+                        - da HATEOAS dazu gehört
+                        - ABER: Hal Spezifikation
                     </aside>
                 </section>
 
@@ -704,10 +721,10 @@ Location: /api/v1/users
                     </pre>
                     <aside class="notes">
                         - _links kann mehr enthalten<br />
-                        * next/previous<br />
-                        * namespacing information wie in xml<br />
-                        - Informations gehalt in _embedded lists kann varieren<br />
+                        * next/previous -> Pagination für Collections<br />
+                        - Informations Gehalt in _embedded lists kann varieren<br />
                         - jenachdem wieviel gesendet wird oder werden soll<br />
+                        - endweder ganze Resource oder nur Verweiß darauf <br />
                     </aside>
                 </section>
 
@@ -765,6 +782,9 @@ Content-Type: application/xml
                     <h1>Contraints erfüllt<br />
                         -> REST = HTTP?
                     </h1>
+                    <aside class="notes">
+                        Eigentlich ja, aber ...
+                    </aside>
                 </section>
 
                 <section>
@@ -782,21 +802,21 @@ Content-Type: application/xml
                 <section>
                     <h1>REpresentational State Transfer</h1>
                     <aside class="notes">
-                        - Sammlung von Constraints
-                        - für die Skalierbarkeit und mit höherer Fehler-Resistenz
-                        - WWW mit HTTP ist ein Beispiel eines solchen Systems
-                        - wahrscheinlichst das größte
-                        ABER:
-                        - auch wenn andere Protokolle möglich wären (SMTP, ..) harmonieren beide hervorragend
-                        - viele Libraries unterstützen das Team
+                        - Sammlung von Constraints <br />
+                        - soll Skalierbarkeit und höherer Fehler-Resistenz von Systemen erhöhen <br />
+                        - WWW mit HTTP ist ein Beispiel eines solchen Systems <br />
+                        - wahrscheinlichst das größte <br />
+                        ABER: <br />
+                        - auch wenn andere Protokolle möglich wären (SMTP, ..) harmonieren beide hervorragend <br />
+                        - viele Libraries unterstützen das Team <br />
                     </aside>
                 </section>
 
                 <section>
-                    <h1>REST loves HTTP</h1>
+                    <h6>I love</h6>
+                    <h1>RESTing on HTTP</h1>
                     <aside class="notes">
-                        Für mich:
-                        - niemand fördert das richtige anwenden von HTTP mehr als REST
+                        - niemand fordert das richtige Anwenden von HTTP mehr als REST
                     </aside>
                 </section>
 
