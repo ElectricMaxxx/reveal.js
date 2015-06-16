@@ -15,7 +15,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+		<link rel="stylesheet" href="css/theme/moon.css" id="theme">
 
 		<!-- Code syntax highlighting -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -64,13 +64,18 @@
                         </li>
 					</ul>
 					<aside class="notes">
-                        - aus der PHP Ecke <br />
-                        - passionierter Symfony Dev <br />
-                        - Core Dev vom Symfony CMF <br />
-						- Twitter handle sollte bekannt sein. <br />
-						- Domain bei Mails: <br />
-						- Arbeitgeber = Mayflower GmbH <br />
-                        - also ganz um die Ecke
+                        Ich komme aus der PHP Ecke. Wer noch? <br />
+                        <br />
+                        Bin passionierter Symfony Dev und teil des Core Teams,
+                        welches das Symfony CMF entwickelt - ein sog. Content Management Framework.<br />
+                        KLICK <br>
+                        Mein Twitter Handle sollte aus dem Abstract bekannt sein - ansonsten folgen <br>
+                        KLICK <br>
+                        Mein Mail-addresse steht für Fragen offen <br>
+                        Wie die Domain schon verrät ... <br>
+                        KLICK <br>
+                        Mein Arbeitgeber ist die Mayflower GmbH. <br>
+                        Also ganz um die Ecke. Ich arbeit am Standort in Würzburg <br>
 					</aside>
 				</section>
 
@@ -78,35 +83,40 @@
 					<h1>About?</h1>
 					<aside class="notes">
 						Worum soll es heute gehen? <br />
-						- Feedback aus der Runde <br />
-						- Wie wurde Abstrakt verstanden? <br />
+						Was habt erwartet Ihr? <br>
+                        <br>
+                        ... Abwarten ...<br>
+                        <br>
+                        KLICK
 					</aside>
 				</section>
 
 				<section>
 					<h1>REST = HTTP?</h1>
 					<aside class="notes">
-						- ist das so?
+						Dann stellt ich hier mal ein Frage in den Raum. <br>
+                        Ist REST gleich HTTP? <br>
+                        <br>
+                        Um das zu klären geben ich noch einmal ein kurze Einführung in HTTP für Webentwickler. <br>
+                        <br>
+                        KLICK
 					</aside>
 				</section>
 
 				<section>
 					<h1>HTTP</h1>
 					<aside class="notes">
-                        - HyperText TransferProtokol  <br />
-                        - Einfürhung <br />
-                        - hat etwas von einer Konversation mit dem Guten alten Brief
-                        - Sende Content = Briefinhalt an Addresse und erhalte eine Antwort
-                        - Request <-> Response <br />
+                        HTTP, so kennen wir es als Entwickler ist das sog. HyperText Transfer Protocol.<br>
+                        <br>
+                        HTTP hat etwas von der Konversation mit dem Guten alten Brief: <br>
+                        Ich sende eine Information an eine bestimmte Addresse und erhalte eine Antwort. Sowahr der Empfänger
+                        das will :-). Jeder Brief enthält Meta-Informationen für den Versand auf dem Umschlag.
+                        Diese entsprechen den Headern bei einem HTTP-Request oder -Response. Dazu enthält jeder Brief Inhalt
+                         - der sog. Body. <br>
+                        D.h. es geht um einen Request an einen Server und desen Response. <br>
+                        Dann schauen wir uns einmal einen solchen Request an: <br>
+                        KLICK
                     </aside>
-				</section>
-
-                <section>
-					<h1>Request</h1>
-					<aside class="notes">
-						- HTTP dient der Übertragung von Nachrichten <br />
-						- Anschauen: Request <br />
-					</aside>
 				</section>
 
 				<section>
@@ -119,20 +129,20 @@ Content-Type: text/html
 					</pre>
                     <p>Header Request</p>
 					<aside class="notes">
-                        - Was sehen wir hier? <br />
-                        - Header eines Request <br />
-                        - könnte so von einem Browser oder anderen HTTP-Client gesendet werden <br />
-						- Request zu HOST <br />
-						- Resource /info <br />
-                        - Methode: GET <br />
-                        - Wie? <br />
-                        - Curl, Postman oder REST-Tool im PhpStorm <br />
+                        Was sehen wir hier?<br>
+                        Den Header eines HTTP request. <br>
+                        Ja das steht da. Aber was genau? <br>
+                        Im Grunde könnte das die Anfrage eines Gewöhnlichen Browsers sein. Den Teil was bei der Auflösung des
+                        Hosts passiert lasse ich jetzt hier mal weg.<br>
+                        Denn es geht mir darum zu zeigen, dass die
+                        Resource /info auf unter der url www.exampl.dev/info angefragt wird.<br>
+                        Wie würde ich einen solchen Request manuell absenden? <br>
+                        - Curl client in der Console, Tools wie bspw. Postman, RestTool im PhpStorm (für PHP devs)<br>
+                        Was passiert dann? <br>
+                        Die Antwort des Servers<br>
+                        KLICK
 					</aside>
 				</section>
-
-                <section>
-                    <h1>Response</h1>
-                </section>
 
 				<section>
 					<pre>
@@ -150,11 +160,14 @@ Content-Type: text/html
 &lt;/html&gt;
 						</code>
 					</pre>
-                    <p>Content Response</p>
+                    <p>Content der Response</p>
 					<aside class="notes">
-						- Body = Content <br />
-						- interessanter wäre auch hier: Header <br />
-                        - na dann mal los
+                        Diese Antwort entspricht dem, was unser Browser bspw. als HTML Content erhalten würde.
+                        Er könnte es dann sicher schön darstellen.<br>
+                        Aber was uns mehr interessiert:<br>
+                        ist der HEADER<br>
+                        <br>
+                        KLICK
 					</aside>
 				</section>
 
@@ -168,11 +181,18 @@ Content-Type: text/html; charset=UTF-8
 					</pre>
                     <p>Header Response</p>
 					<aside class="notes">
-                        - Alles OK, steht sogar da <br />
-                        - Status Code: 200 (numerischer Wert) <br />
-                        - Textform: OK <br />
-                        - zusätzliche Header wie z.B. Content-Type, -Lenght<br />
-                        - und viele mehr möglich<br />
+                        Das sieht gut aus. Auf anhieb können wir erkennen, das der Request erfolgreich beantwortet wurde. <br>
+                        Gleich auf zwei Arten steht es da.<br>
+                        Der Statuscode als numerischer wert über Erfolg oder Misserfolg. <br>
+                        Und eine Phrase, hier OK. <br>
+                        Dazu können noch unzählige andere Informationen kommen, wie <br>
+                        - Content-Type <br>
+                        - Content-Location <br>
+                        - Caching Headers <br>
+                        - und und und <br>
+                        <br>
+                        Nun zu einigen Informationen im einzelnen ... <br>
+                        KLICK
 					</aside>
 				</section>
 
@@ -186,23 +206,29 @@ Content-Type: text/html; charset=UTF-8
                         <li class="fragment"><span class="">5XX - Fehler am Server</span></li>
                     </ul>
                     <aside class="notes">
-                        - Was sind jetzt diese Status Codes? <br />
-                        - gibt info über (Miss-)erfolg eines Request <br />
-                        - Phrase für den Grund -> kurze Info <br />
-                        - Unterteilung in Gruppen <br />
-                        - dreistellig, numerisch <br />
-                        -> jetzt los, Click <br />
+                        Die Status Codes ... <br>
+                        ... geben Information über Erfolg oder Misserfolg eines Requests. <br>
+                        ... werden durch eine Phrase ergänzt, die den Grund (bspw. für den Misserfolg) darstellt. <br>
+                        ... und werden in Gruppen unterteilt. <br> <br>
+                        KLICK
+                        Alle die mit einer 1 beginnen signalisieren, dass der Server noch etwas Zeit benötigt. <br> KLICK
+                        Die 2 am Anfang stellt einen Erfolg dar. Bekanntester Vertreter ist: 200 OK <br> KLICK
+                        Die 3 ist nicht kritisch, aber es läuft schon nicht alles nach Plan. Beschreibt Umleitung. Bsp: 301 Moved Permanently <br> KLICK
+                        Die 4 markiert einen Fehler beim der Client Applikation. Bsp: 404 Not Found - eine Resource wurde angefragt, die es nicht gibt. <br> KLICK
+                        Die 5 am Anfang signalisiert ein Fehler am Server. Bsp: 500 Internal Server Error <br>
+                        Neben den Statuscodes konnten wir in dem Beispiel eine weitere Eigenschaft von HTTP erkennen: <br>
+                        KLICK
                     </aside>
                 </section>
 
                 <section>
                     <h1>Method</h1>
                     <aside class="notes">
-                        - Im Beispiel GET <br />
-                        - Doch es gibt mehr <br />
-                        - Haben Bewandniss <br />
-                        - zumindest mehr als wie die Werte aus einem Formular an den Server geschickt werden <br />
-                        - PHP Insider :-) <br />
+                        Die Methoden <br>
+                        .. ergänzen eine Request um den Grund der Anfrage. <br>
+                        Die bekantesten Sind GET und POST. <br>
+                        Doch es gibt natürlich mehr... <br>
+                        KLICK
                     </aside>
                 </section>
 
@@ -216,42 +242,47 @@ Content-Type: text/html; charset=UTF-8
                 <section>
                     <h1>GET</h1>
                     <aside class="notes">
-                        - richtig angewendet schon <br />
-                        - GET fordert nur Resource an <br />
-                        - ändert keine Resourcen <br />
-                        - keine Side-Effects <br />
-                        - Idempotent: kann immer wieder aufrufen -> selbes Ergebnis <br />
+                        Genau!<br>
+                        Aber nur richtig angewendet. <br>
+                        GET fordert nur eine Resource an. Es ändert keine Resource, hat also keine Side-Effects auf dem Server.<br>
+                        Soetwas ....<br>
+                        KLICK
                     </aside>
                 </section>
 
                 <section>
                     <h1>GET /blog/2/edit</h1>
-
+                    <aside class="notes">
+                        Geht mal garnicht ...<br>
+                        KLICK
+                    </aside>
                 </section>
 
                 <section>
                     <h1><strike>GET /blog/2/edit</strike></h1>
                     <aside class="notes">
-                        Gleich wieder vergessen <br />
-                        Geht garnicht
+                        Also bitte gleich wieder vergessen. <br>
+                        Dann lieber ... <br>
+                        KLICK
                     </aside>
                 </section>
 
                 <section>
                     <h1>POST / PUT</h1>
                     <aside class="notes">
-                        - Dann lieber eine von denen
-                        - Aber welche?
+                        Aber welche? <br>
+                        KLICK
                     </aside>
                 </section>
 
                 <section>
                     <h1>POST</h1>
                     <aside class="notes">
-                        - Anlegen von neuer Resource <br />
-                        - man will etwas hinzufügen <br />
-                        - URL nicht vollständig bekannt <br />
-                        - Payload mit senden <br />
+                        POST dient dem Anlegen einer neuer Resource. Im Grunde ergänzt es eine Liste an Resourcen um einen
+                        neuen Eintrag. <br>
+                        Vor allem verwendet man POST wenn man sich nicht ganz sicher ist unter welcher URL der neue Eintrag anglegt werden soll.
+                        Denn meist ist die ID nicht bekannt, da der Server diese bspw. über ein auto-increment zuteilt. <br>
+                        Natürlich muss ich im Body die Daten zu der neuen Resource mit senden. <br>
                     </aside>
                 </section>
 
