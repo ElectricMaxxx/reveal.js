@@ -1,0 +1,19 @@
+{
+  "_links":{
+    "self": { "href": "/users/3" }
+
+  },
+  "userId": "3",
+  "_embedded": {
+    "orders": [{
+      "_links": {
+        "self": { "href": "users/3/orders/123"}
+      }
+    }],
+    "groups": [{
+      "_links": {
+        "self": { "href": "users/3/orders/2"}
+      }
+    }]
+  }
+}
