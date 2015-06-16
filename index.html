@@ -283,6 +283,8 @@ Content-Type: text/html; charset=UTF-8
                         Vor allem verwendet man POST wenn man sich nicht ganz sicher ist unter welcher URL der neue Eintrag anglegt werden soll.
                         Denn meist ist die ID nicht bekannt, da der Server diese bspw. über ein auto-increment zuteilt. <br>
                         Natürlich muss ich im Body die Daten zu der neuen Resource mit senden. <br>
+                        Hier wäre ein Beispiel ...<br>
+                        KLICK
                     </aside>
                 </section>
 
@@ -301,8 +303,10 @@ Content-Type: application/json
                     </pre>
                     <p>POST request</p>
                     <aside class="notes">
-                        - ändert aber nix <br />
-                        - Angabe Content-Type gibt an von welchem Type dei gesendeten Daten sind <br /> <br />
+                        Was wir hier tun ist ein POST request auf die Liste der User, weil wir die geanue ID nicht wissen - darum auch POST. <br>
+                        Wir senden unser User Object im JSON Format im Body mit. <br>
+                        Und erhalten vom Server ... <br>
+                        KLICK
                     </aside>
                 </section>
 
@@ -322,17 +326,24 @@ Content-Location: /users/3
                     </pre>
                     <p>POST response</p>
                     <aside class="notes">
-                        - hat wohl geklappt <br />
-                        - Content-Location: Da findet man jetzt den neu angelegten Usr <br />
-                        - Body = User zurück mit seinder<br />
+                        ... Es scheint wohl geklappt zu haben. <br>
+                        Der Server teilt uns mit der Content-Location mit wo wir unseren neuen User jetzt finden können. <br>
+                        Dazu erhalten wir das komplette Object noch einmal zurück. <br>
+                        Als Statuscode wird uns 201 Created gesendet. 2 vorne dran also alles OK. <br>
+                        Dem steht gegenüber ...<br>
+                        KLICK
                     </aside>
                 </section>
 
                 <section>
                     <h1>PUT</h1>
                     <aside>
-                        - ändern einer bestimmten Resource <br />
-                        - Anlegen einer Resource, wenn URL bekannt <br />
+                        ... der PUT request. <br>
+                        Diesen wendet man an, wenn die man eine Resource anlegen will und deren URL genau kennt. <br>
+                        Oder man Werte einer Resource verändern will. <br>
+                        Auch hier muss man dann natürlich die URL der Resource genau wissen.<br>
+                        So sähe ein Request dann aus ... <br>
+                        KLICK
                     </aside>
                 </section>
 
@@ -352,9 +363,10 @@ Content-Type: application/json
                     </pre>
                     <p>PUT request</p>
                     <aside class="notes">
-                        - URL bekannt <br />
-                        - wir haben ja angelegt  <br />
-                        - fügen einfach nur email-Feld hinzu <br />
+                        ... Ähnelt eigentlich dem des POST request - nur die Adresse ist genau.  <br>
+                        Wir wollen also den User mit der ID = 3 verändern. Hier um eine Email-Addresse ergänzen. <br>
+                        Was antwortet der Server? ... <br>
+                        KLICK
                     </aside>
                 </section>
 
@@ -374,34 +386,40 @@ Content-Type: application/json;
                     </pre>
                     <p>POST response</p>
                     <aside class="notes">
-                        - hat wohl geklappt <br />
-                        - bekomme wohl auch den gewünschten Content-Type <br />
-                        - Body = User (optionial) <br />
+                        ... in diesem Fall ein 200 OK, weil es nicht angelegt wurde. Dazu fehlt jetzt auch die Content-Location. <br>
+                        Haben wir ja gekannt.<br>
+                        Wie im POST request erhalten wir die Resource im aktuellen Zustand im Body. <br>
+                        Es gibt noch einen dritten im Bunde ... <br>
+                        KLICK
                     </aside>
                 </section>
 
                 <section>
                     <h1>PATCH</h1>
                     <aside class="notes">
-                        - Zum verändern von einzelnen Werten einer Resource
-                        - macht weniger kaput wie PUT
+                        ... soll ähnlich wie PUT resourcen durch einen request verändern.<br>
+                        Bei PATCH möchte man aber nur einzelene Werte ändern. D.h. man schickt auch nur diese an die URL der resource. <br>
+                        Also ...
+                        KLICK
                     </aside>
                 </section>
 
                 <section>
                     <h1>POST / PUT / PATCH</h1>
                     <aside class="notes">
-                        - definitiv nicht idempotent. Ist die Resource noch da? <br />
-                        - haben Side-Effects <br />
-                        - ändern schließlich Werte oder legen neue Resourcen an <br />
+                         ... sind nun definitiv keine sicheren Methoden. Denn:  <br>
+                        Sie verändern eine Resource oder legen eine neue an. D.h. sie verursachen Side Effects. <br>
+                        Side Effects der besonderen Art liefert diese Methode ... <br>
+                        KLICK
                     </aside>
                 </section>
 
                 <section>
                     <h1>DELETE</h1>
                     <aside class="notes">
-                        - zum entfernen einer Resource <br />
-                        - natürlich mit Side-Effects
+                        ... Sie löscht diese gleich ganz. <br>
+                        Natürlich muss die URL der resource dazu bekannt sein. Dann sähe ein Request so aus .. <br>
+                        KLICK
                     </aside>
                 </section>
 
@@ -414,8 +432,9 @@ Host: www.example.dev
                     </pre>
                     <p> DELETE request</p>
                     <aside class="notes">
-                        - Resource muss natürlich bekannt sein <br />
-                        - kein Content-Type nötig
+                        Recht simpel. <br>
+                        Server antwortet... <br>
+                        KLICK
                     </aside>
                 </section>
 
@@ -428,33 +447,42 @@ Location: /users
                     </pre>
                     <p>DELETE response</p>
                     <aside class="notes">
-                        - hat wohl geklappt <br />
-                        - kein Body nötig <br />
-                        - Warum auch? <br />
-                        - Weiterleitung auf Collection (optional) -> HATEAOS (später) <br />
-                        - Man spricht sonst von einem sogenannten dead End <br />
+                        ... das scheint wieder erfolgreich gewesen zu sein. Es steht zumindest eine 2 vorn dran am Statuscode. <br>
+                        204 No Content <br>
+                        Ja welchen Content soll man denn auch hier noch senden? Resource existiert nicht mehr. <br>
+                        Für Client Anwendungen, die sich an HATEOAS halten kann oder sollte ein Location Header
+                        angegeben werden, damit die Navigation nicht unterbrochen wird.  <br>
+                        Es gibt noch zwei weitere, kleinere Methoden ... <br>
+                        KLICK
                     </aside>
                 </section>
 
                 <section>
                     <h1>OPTIONS</h1>
                     <aside class="notes">
-                        - idempotent wie GET, ohne Side-Effect <br />
-                        - liefert Informationen über mögliche Methode <br />
-                        - kann von Authorisation Status abhängig sein <br />
-                        - Wenn ausgelogged: GET <br />
+                        ... ist wie GET ebenfalls frei von Side-Effects. <br>
+                        Es liefert der Client Applikation Informationen welche Methoden aktuell verfügbar sind. Diese
+                        sind im Allowed-Methods Header aufgelistet. <br>
+                        Was ich aktuell meine möchte ich einmal mit dem aktuellen Zustand der Athentification umschreiben:<br>
+                        - Wenn ausgelogged, kein der Applicatio/ dem User meist nur eine Methode zur Verfügung stehen: GET <br />
                         - Wenn eingelogged: POST, PUT <br />
                         - Wenn spezielle Rolle: DELETE <br />
+                        Und zum Schluss ... <br>
+                        KLICK
                     </aside>
                 </section>
 
                 <section>
                     <h1>HEAD</h1>
                     <aside class="notes">
-                        - benahe identisch zu GET <br />
-                        - Server braucht aber kein Body zurück liefern <br />
-                        -> nützliche Informationen im Header, bspw expire date für Cache  <br />
-                        -> Cut in der nächsten Folie
+                        ... ist beinahe identisch zu GET, liefert aber keinen Body also Content mit. <br>
+                        Die Response besteht also nur aus dem puren Header. <br>
+                        Das kann für Applikationen von nutzen sein, will man bspw. nur abfragen ob sich eine Resource
+                        verändert hat, so erfährt man dieses durch caching informationen in den headern. <br>
+                        <br>
+                        Sind bis hier her Fragen aufgetreten? <br>
+                        Ansonsen ... <br>
+                        KLICK
                     </aside>
                 </section>
 
@@ -462,9 +490,11 @@ Location: /users
                     <h1>Roy Fielding</h1>
                     <p class="fragment"><a href="http://tools.ietf.org/html/rfc2616">HTTP Spezification</a></p>
                     <aside class="notes">
-                        - einer der Hauptautoren der HTTP Spec <br />
-                        - bereits 1994 HTTP Object Model entwickelt <br />
-                        - dann ...
+                        ... Dann kommen wir zu diesem Herrn - Roy Fielding. <br>
+                        KLICK
+                        Ist einer der Hauptautoren der HTTP Spezifikation. <br>
+                        Seine Arbeit am HTTP Object Model mündete 2000 ein seiner ...<br>
+                        KLICK
                     </aside>
                 </section>
 
@@ -478,65 +508,82 @@ Location: /users
                     </h4>
                     <p>DOCTOR OF PHILOSOPHY, 2000</p>
                     <aside class="notes">
-                        - Ausarbeitung des Object Models <br />
-                        - Teil davon ist die Beschreibung von REST <br />
+                        ... Disertation zum Doctor der Philosophie ...!<br>
+                        Und gibt es kein passenderes Thema für die Philosophie als: <br>
+                        Architectural Styles and
+                        the Design of Network-based Software Architectures <br>
+                        <br>
+                        Ein Teil dieser Arbeit behandelt RESTfull Applications. <br>
+                        Zusammengefasst ... <br>
+                        KLICK
                     </aside>
                 </section>
 
                 <section>
                     <h1>4 Constraints</h1>
                     <aside class="notes">
-                        - es geht im Grunde um 4 Constraints
-                        - haben sich heraus kristalisiert
+                        ... kann man es auf 4 Contraints herunter brechen. <br>
+                        Die da wären ... <br>
                     </aside>
                 </section>
 
                 <section>
                     <h1>1.<br />Adressierbarkeit</h1>
                     <aside class="notes">
-                        - jede resource muss eindeutig im Netz erreichbar sein <br />
-                        - hinter jeder URL muss sich immer die selbe Resource verbergen <br />
+                        ... die Adressierbareit. <br>
+                        Jede Resource muss eindeutig im Netz erreichbar sein. <br>
+                        D.h. unter einer URL dürfen sich nicht zwei Resourcen verbergen. <br>
+                        Dazu kommen dann ...<br>
+                        KLICK
                     </aside>
                 </section>
 
                 <section>
                     <h1>2.<br />Repräsentationen</h1>
                     <aside class="notes">
-                        - Abwandlung einer Resource kann nur eine Repräsentation sein <br />
-                        Repräsentaton kann sein: <br />
-                        - andere Sprache <br />
-                        - anderer Content-Type <br />
+                        ... die sog. Repräsentationen einer Resource. <br>
+                        Unter Repräsentation versteht man jede mögliche Abwandlung. So kann die eine Abwandlung nur die Sprache sein,
+                        eine weitere bezieht sich auf den Content-Type also das Format, in der diese ausgeliefert wird. <br>
+                        Eine Eigenschaft, die ich beim HTTP nicht genannt habe, aber für REST auch zutrifft ist ... <br>
+                        KLICK
                     </aside>
                 </section>
 
                 <section>
                     <h1>3.<br />Zustandslosigkeit</h1>
                     <aside class="notes">
-                        - jeder Service bekommt immer alle informationen um einen Request zu bearbeiten <br />
-                        - Service weiß nichts von vorhergehenden Requests <br />
-                        - Widerspricht eigentlich unserer Denkweise von Sessions/Cookies <br />
-                        - erhört dann natürlich Skalierbarkeit, da Lastverteilung einfacher <br />
-                        - Load Balancer muss kann nach belieben Requests auf verschiedene Nodes verteilen <br />
-                        -> Client App. ist muss Zustand halten
+                        ... die Zustandslosigkeit. <br>
+                        Der Service erhält vom Request immer alle Informationen, die er zum Bearbeiten des Requests benötigt. <br>
+                        Der Service weiß nichts von vorhergehenden Requests der selbem Applikation. <br>
+                        Das Widerspricht eigentlich unsere Denkweise von Sessions und Cookies, ist aber sowohl fester Bestandteilt von
+                        REST als auch von HTTP.<br>
+                        Das soll die Skalierbarkeit erhöhen, da die Lastverteilung durch einen LoadBalancer deutlich einfacher wird.
+                        Er kann nach belieben, oder nach reinen Lastwerten, die Requests verteilen - muss sich also keine sorgen um den
+                        Erhalt von Sessions machen.<br>
+                        Die Client Applikation sollte den Zustand selbst halten. <br>
+                        Und zu guter Letzt ... <br>
+                        KLICK
                     </aside>
                 </section>
 
                 <section>
                     <h1>4.<br />Operationen</h1>
                     <aside class="notes">
-                        - dienen dem state transfer <br />
-                        - Rudimentärer Bestandteil von REST <br />
-                        - Resource kann nur über eine Operation, veändert, angelegt oder gelöscht werden <br />
-                        - nicht in der URL!! <br />
-                        - Methoden in HTTP?  <br />
+                        ... die Operationen. <br>
+                        Sie dienen dazu den sog. state transfer zu vollziehen. Denn jegliche änderung am Zustand einer Resource
+                        kann nur durch einen Request mit einer best. Operation durch geführt werden. <br />
+                        So dann wollen wir mal noch ein paar Begriffe klären ... <br>
+                        KLICK
                     </aside>
                 </section>
 
                 <section>
                     <h1>Resourcen?</h1>
                     <aside class="notes">
-                        - rede die ganze Zeit davon
-                        - aber was sind Resourcen?
+                        Ich rede zwar schon die ganze Zeit davon, aber was ist eigentlich eine Resource?<br>
+                        Edelsteine? Human Resources?<br>
+                        Nein!<br>
+                        KLICK
                     </aside>
                 </section>
 
@@ -548,13 +595,26 @@ Location: /users
                         <li class="fragment">Liste von Resourcen</li>
                     </ul>
                     <p class="fragment">Alles was Ziel einer Referenz/eines Link sein kann.</p>
+                    <aside class="notes">
+                        Quasi, jede Information kann Resource sein. <br>
+                        KLICK
+                        Ob ein HTML Dokument. <br>
+                        KLICK
+                        oder ein Bild. <br>
+                        KLICK
+                        oder eine Liste von anderen Resourcen. <br>
+                        Diese kommt dann vor in... <br>
+                        KLICK
+                    </aside>
                 </section>
 
                 <section>
-                    <h1>Verschiedene Repräsentationen</h1>
+                    <h1>Repräsentationen</h1>
                     <aside class="notes">
-                        - Wie könnten die denn aussehen?
-                        - Wir nehmen uns mal einen vereinfachten User vor ...
+                        ... Repräsentationen. <br>
+                        Doch wie sehen diese aus?<br>
+                        Wir nehmen uns mal einen vereinfachten User vor ...<br>
+                        KLICK
                     </aside>
                 </section>
 
@@ -572,7 +632,10 @@ Location: /users
                     </pre>
                     <p>User als JSON</p>
                     <aside class="notes">
-                        - wird in vielen Javascript applications geschätzt
+                        Diese Form wird gerade von JavaScript Applikationen geschätzt. Es geht ums JSON. <br>
+                        Die Resource ist der USER und diese Form bildet eine Repräsentation dessen. <br>
+                        In XML würde das dann so aussehen ... <br>
+                        KLICK
                     </aside>
                 </section>
 
@@ -590,7 +653,9 @@ Location: /users
                     </pre>
                     <p>User als XML</p>
                     <aside class="notes">
-                        - vereinfacht, ohne xsd o.Ä.
+                        Es geht um die selbe Information - nur in einem anderen Format. <br>
+                        Selbst das ist eine Repräsentation ... <br>
+                        KLICK
                     </aside>
                 </section>
 
@@ -614,15 +679,22 @@ Location: /users
 &lt;/ul&gt;
                         </code>
                     </pre>
-                    <p>User als HTML bspw. in einem Profil</p>
+                    <p>User als HTML in einem Profil</p>
+                    <aside class="notes">
+                        Einfaches HTML. <br>
+                        Der User erhält eine Darstellung bspw. in einem User-Profil <br>
+                        Doch ... <br>
+                        KLICK
+                    </aside>
                 </section>
 
                 <section>
                     <h1>Wie erhalte die die gewünnschte Repräsentation?</h1>
                     <aside class="notes">
-                        - haben jetzt gesehen, dass es sie gibt, aber wie komme ich dann an die Ran <br />
-                        - Wichtig: Server muss sie natürlich bereit stellen können <br />
-                        - d.h. in der Lage dazu sein <br />
+                        ... wir haben jetzt gesehen, dass es sie gibt, aber wie komme ich dann an die Ran?<br />
+                        Wichtig: Server muss sie natürlich bereit stellen können. <br />
+                        Dann  wäre das eine Idee ... <br>
+                        KLICK
                     </aside>
                 </section>
 
@@ -634,8 +706,18 @@ Location: /users
                         <li class="fragment">Oder <code data-trim>/users/3.html</code></li>
                     </ul>
                     <aside class="notes">
-                        - wenn Repräsentaion nicht da, dann 404 Not Found
-                        - im Symfony Umfeld: FosRestBundle -> default
+                        ... direkt in der URL. <br>
+                        Jede Resource erhält einen Suffix, der das Format bestimmt. <br>
+                        KLICK<br>
+                        z.B. .json<br>
+                        KLICK<br>
+                        oder .xml <br>
+                        KLICK<br>
+                        oder gar .html<br>
+                        Ein Vorteil liegt hier auf der Hand: <br>
+                        Der Server kann direkt mit einem 404 Not Found antworten, wenn es eine Repräsentation nicht gibt.<br>
+                        Aber es gibt einen zweiten Weg: <br>
+                        KLICK
                     </aside>
                 </section>
 
@@ -648,25 +730,39 @@ Location: /users
                         <li class="fragment">Oder <code data-trim>Content-Type: text/html</code></li>
                     </ul>
                     <aside class="notes">
-                        - dann über den Content-Type
-                        - kein Versprehen, dass der Server das auch liefern kann
-                        - nur ein Wunsch
+                        ... im Header. <br>
+                        Wie?<br>
+                        Über den Content-Type<br>
+                        KLICK<br>
+                        z.B. .json<br>
+                        KLICK<br>
+                        oder .xml <br>
+                        KLICK<br>
+                        oder gar .html<br>
+                        Die Angabe des Content-Type ist aber nicht bindend, der Server kann, wenn er nicht mag in seiner
+                        präferierten Art und Weise antworten. D.h. der Client muss den Service kennen. <br>
+                        Gibt es Fragen bis hier her? <br>
+                        KLICK
                     </aside>
                 </section>
 
                 <section>
                     <h1>Wie soll Resource aussehen?</h1>
                     <aside class="notes">
-                        - Client will meist mehr information als reinen Paylod <br />
-                        - also bspw. die Daten eines Users <br />
-                        - z.B. Metadaten oder mögliche Links <br />
+                        Dann schauen wir uns einmal an, welche Informationen neben dem normalen Paylod an einer Resource Hängen.<br>
+                        Als Client will ich nämlich nicht nur die reinen Daten bspw. eines Users haben, sondern auch wissen welche
+                        Aktionen ich ausführen kann oder wohin ich weiter navigieren könnte. <br>
+                        D.h. der Client will Links ... <br>
+                        KLICK
                     </aside>
                 </section>
 
                 <section>
                     <h1>HATEOAS</h1>
                     <aside class="notes">
-                        - Pattern für REST Apps
+                        Das führt uns direkt zu HATEOAS. <br>
+                        Das ist ein direkted Pattern was aus den Arbeiten von Roy Fielding folgt ... <br>
+                        KLICK
                     </aside>
                 </section>
 
@@ -682,14 +778,17 @@ Location: /users
                 <section>
                     <h1>WTF?</h1>
                     <aside class="notes">
-                        - WWW lebt von Links <br />
-                        - völlig normal in Webseiten <br />
-                        - Google beurteilt nach Qualität und Quanität von Verweisen <br />
-                        - Nutzer navigiert durch Netzt über Links <br />
-                        -> Motor = Engine <br />
-                        - Client kann sich nach initialen infos selbst durch die Resourcen bewegen <br />
-                        - es geht sogar so weit, dass Clients code zum ausführen von bestimmten Applications-Teilen bekommen <br />
-                        - z.B java applets
+                        ... WTF? <br>
+                        Das web, so wie wir es kennen lebt von Links. Ohne diese wäre es nicht zu dem Medium geworden, wie
+                        wir es kennen. <br>
+                        Jede normale Webseite enthält Links zu anderen Seiten. Google beurteilt nach Qualität und Quanität von Verweisen.<br />
+                        Der Nutzer navigiert durch Netzt über Links <br />
+                        Das bedeutet Links auch Hyperlinks bilden den Motor für das Web. <br>
+                        So soll es natürlich auch für Resourcen sein, die ein Client von einem REST service erhält. Schon in einem Initialen Request
+                        sollten Links, hier hypermedia links, sein, damit der Client Optionen zum navigieren erhält. <br>
+                        Client Applikationen sollen quasi selbst denkend durch die Resourcen navigieren können. <br>
+                        Wie würde das für XML aussehen ?<br>
+                        KLICK
                     </aside>
                 </section>
 
@@ -709,10 +808,14 @@ Location: /users
                         </code>
                     </pre>
                     <aside class="notes">
-                        - user hat veweis auf weiter entitäten <br />
+                        Die Resource des Users wurde durch Link Nodes ergänzt.<br>
+                        Diese tragen die Verweise auf weitere Resourcen. Hier sind es direkte Eigenschften eins Users, die
+                        in seperaten Resourcen gespeichert sind. <br>
                         - Gruppen, Bestellungen und Rollen <br />
-                        - ausgabe kann je nach Rechte des Clients variieren <br />
-                        - so können hier dann auch Routen für bspw. DELETE extra drin sein, was nicht jeder darf <br />
+                        Die ansicht der möglichen Links kann je nach Authorisation variieren. Mit zu wenigen Rechten versehen
+                        kann einem Client der Verweis zu den Bestellungen erst gar nicht angezeigt werden. <br>
+                        Aber was ist mit ... <br>
+                        KLICK
                     </aside>
                 </section>
 
@@ -720,12 +823,16 @@ Location: /users
                     <h1>JSON ?</h1>
                     <p class="fragment"><a href="http://stateless.co/hal_specification.html">HAL Spezifikation</a></p>
                     <aside class="notes">
-                        - Schwierig
-                        - Controvers
-                        - Weil kein Standart für Links gegeben
-                        - müsste man eigentlich sagen, dass keine REST Konforme Kommunikation mit JSON möglich wäre
-                        - da HATEOAS dazu gehört
-                        - ABER: Hal Spezifikation
+                        ... JSON?<br>
+                        Das ist schwierig und wird auch controvers diskutiert.<br>
+                        Denn im Grunde hält die JSON Spezifikation keine Möglichkeit bereit Links zu definieren. <br>
+                        Da aber HATEOAS wie die constraints zu REST gehört, würde das jede Kommunikation mit JSON von REST
+                        ausschließen. <br>
+                        ... Aber ... <br>
+                        KLICK
+                        Es gibt die sog. HAL Spezifikation, die diese Lücke schließt. <br>
+                        Eine Resource wie eben in XML würde in JSON, dann so aussehen ... <br>
+                        KLICK
                     </aside>
                 </section>
 
@@ -751,18 +858,24 @@ Location: /users
                         </code>
                     </pre>
                     <aside class="notes">
-                        - _links kann mehr enthalten<br />
-                        * next/previous -> Pagination für Collections<br />
-                        - Informations Gehalt in _embedded lists kann varieren<br />
-                        - jenachdem wieviel gesendet wird oder werden soll<br />
-                        - endweder ganze Resource oder nur Verweiß darauf <br />
+                        Unter dem key _links können je nach authorisation und resource mehr Links enthalten.
+                        So kann man dort für List Links für die Paginierung bereithalten - also next/previos. <br>
+                        Unter _embedded findet man hier list von ganzen Resourcen. Naja ganz stimmt nicht ganz. <br>
+                        Hier sind es nur deren links auf die Resource selbst. Man könnte aber auch gut, die ganze Resource dar stellen.
+                        Hängt immer vom Use Case ab. <br>
+                        So nun ... <br>
+                        KLICK
                     </aside>
                 </section>
 
                 <section>
                     <h1>Zurück auf Null</h1>
                     <aside class="notes">
-                        - sind gestarted bei Request + Response um HTTP zu skizzieren
+                        ... Zurück auf Null. <br>
+                        Wo sind wir gestarted? <br>
+                        Wir haben ein Request <-> Repsonse Paar skiziert umd HTTP zu erklären. <br>
+                        Also ... <br>
+                        KLICK
                     </aside>
                 </section>
 
@@ -776,11 +889,11 @@ Content-Type: application/xml
 					</pre>
                     <p>Request auf User mit der ID 3</p>
                     <aside class="notes">
-                        - Machen den selben Request wie zu Anfang, nur auf einen User
-                        - Request auf eine Resource users/3 (eindeutige Adresse)
-                        - Repräsentation: XML
-                        - Operation GET
-                        - natürlich keine Zustandsinformationen
+                        Ich habe jetzt nur mal die Resource auf unseren altebekannten User gewechselt und wünsche
+                        mir die Antwort in der XML-Repräsentation. <br>
+                        Dazu mache ich einen GET Request auf die genau URL der Resource, also des Users mit der ID = 3.<br>
+                        Mit diese Information kann der Server wohl völlig zustandslos eine Antwort generieren ... <br>
+                        KLICK
                     </aside>
                 </section>
 
@@ -804,51 +917,62 @@ Content-Type: application/xml
 					</pre>
                     <p>Anwort des Services in XML</p>
                     <aside class="notes">
-                        - XML Repräsentation der Resource user/3 gesendet
-                        - Antwort auf einen GET Request
+                        ... Wie angefordert erhalte ich den User mit der ID = 3 in der XML Repräsentation
+                        als Antwort auf meine GET Operation.
                     </aside>
                 </section>
 
                 <section>
                     <h1>Contraints erfüllt<br />
-                        -> REST = HTTP?
+                        <span class="fragment">
+                            -> REST = HTTP?
+                        </span>
                     </h1>
                     <aside class="notes">
-                        Eigentlich ja, aber ...
+                        Mh. Nun eigentlich  sind doch alle Constraints für REST erfüllt. <br>
+                        Ich habe nur die Regeln von HTTP angewandt. <br>
+                        Ist also ... <br>
+                        KLICK<br>
+                        Die Antwort ist ... <br>
+                        KLICK
                     </aside>
                 </section>
 
                 <section>
                     <h1>NEIN !</h1>
+                    <aside class="notes">
+                        Ja, genau. <br>
+                        KLICK
+                    </aside>
                 </section>
 
                 <section>
                     <h1>HypeText Transfer Protocol</h1>
                     <aside class="notes">
-                        - regelt den Transfer von Dateien
-                        - andere existieren: FTP
+                        HTTP ist ein Protokol, was den Transfer von Files regelt. <br>
+                        Neben ihm existierne noch andere wie FTP oder SMTP. <br>
+                        Und ... <br>
+                        KLICK
                     </aside>
                 </section>
 
                 <section>
                     <h1>REpresentational State Transfer</h1>
                     <aside class="notes">
-                        - Sammlung von Constraints <br />
-                        - soll Skalierbarkeit und höherer Fehler-Resistenz von Systemen erhöhen <br />
-                        - WWW mit HTTP ist ein Beispiel eines solchen Systems <br />
-                        - wahrscheinlichst das größte <br />
-                        ABER: <br />
-                        - auch wenn andere Protokolle möglich wären (SMTP, ..) harmonieren beide hervorragend <br />
-                        - viele Libraries unterstützen das Team <br />
+                        REST beschreibt eigentlich nur eine Sammlung von Constraints oder Patterns. <br>
+                        Es soll Skalierbarkeit und Fehler-Resistenz von Systemen erhöhen <br />
+                        Natürlich ist das Web mit HTTP ein solches System - wohl auch das größte. <br>
+                        Aber es gäbe wie gesagt noch weitere Protokolle.<br>
+                        Doch REST und HTTTP harmonisieren einfach mit einander. <br>
+                        Es gibt weniges was einem zu sauberen HTTP auffordert, wie REST. Dazu gibt es in vielen
+                        Programmiersprachen Libraries für die REST Kommunikation über HTTP.<br>
+                        Darum ... <br>
                     </aside>
                 </section>
 
                 <section>
                     <h6>I love</h6>
                     <h1>RESTing on HTTP</h1>
-                    <aside class="notes">
-                        - niemand fordert das richtige Anwenden von HTTP mehr als REST
-                    </aside>
                 </section>
 
                 <section>
